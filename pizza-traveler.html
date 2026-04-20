@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Traveling Pizzaiolo</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4e1d2;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #game-container {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 5px solid #d9534f;
+            border-radius: 15px;
+            box-shadow: 10px 10px 0px #5e2a2a;
+        }
+        .city-header {
+            background: #5bc0de;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #pizza-base {
+            width: 200px;
+            height: 200px;
+            background: #f0ad4e;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 8px dashed #8a6d3b;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+        }
+        .ingredient-btn {
+            background: #fff;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .ingredient-btn:hover { background: #eee; }
+        #message { font-weight: bold; color: #d9534f; margin-top: 15px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    <div class="city-header">
+        <h2 id="current-city">Current Stop: Rome, Italy 🇮🇹</h2>
+        <p id="order-request">Order: 1 Tomato, 1 Cheese, 1 Basil</p>
+    </div>
+
+    <div id="pizza-base">
+        <div id="added-ingredients"></div>
+    </div>
+
+    <div id="controls">
+        <button class="ingredient-btn" onclick="addIngredient('🍅 Tomato')">🍅 Tomato</button>
+        <button class="ingredient-btn" onclick="addIngredient('🧀 Cheese')">🧀 Cheese</button>
+        <button class="ingredient-btn" onclick="addIngredient('🌿 Basil')">🌿 Basil</button>
+        <button class="ingredient-btn" onclick="addIngredient('🍍 Pineapple')">🍍 Pineapple</button>
+    </div>
+
+    <p id="message"></p>
+    
+    <button id="next-city-btn" class="hidden" onclick="goToNextCity()" style="background:#5cb85c; color:white; padding:15px; border:none; border-radius:5px; cursor:pointer;">
+        Pack Bags & Fly to Next City! ✈️
+    </button>
+
+    <br><br>
+    <a href="fromscratch.html" style="color: #888; text-decoration: none; font-size: 0.8rem;">← Abandon Flight (Back to Scratch Page)</a>
+</div>
+
+<script>
+    const destinations = [
+        { city: "Rome, Italy 🇮🇹", order: ["🍅 Tomato", "🧀 Cheese", "🌿 Basil"], msg: "Perfecto! A classic Margherita." },
+        { city: "New York, USA 🇺🇸", order: ["🍅 Tomato", "🧀 Cheese"], msg: "A true NY Slice!" },
+        { city: "Honolulu, Hawaii 🏝️", order: ["🍅 Tomato", "🧀 Cheese", "🍍 Pineapple"], msg: "Aloha! The controversial choice." }
+    ];
+
+    let currentStep = 0;
+    let currentPizza = [];
+
+    function addIngredient(ing) {
+        currentPizza.push(ing);
+        document.getElementById('added-ingredients').innerText = currentPizza.join(" + ");
+        checkPizza();
+    }
+
+    function checkPizza() {
+        const goal = destinations[currentStep].order;
+        const messageDisplay = document.getElementById('message');
+        
+        // Simple check: does the current pizza match the length and items of the goal?
+        if (currentPizza.length === goal.length) {
+            const isCorrect = goal.every(val => currentPizza.includes(val));
+            if (isCorrect) {
+                messageDisplay.innerText = destinations[currentStep].msg;
+                document.getElementById('next-city-btn').classList.remove('hidden');
+            } else {
+                messageDisplay.innerText = "That's not what they ordered! Try again.";
+                currentPizza = [];
+                document.getElementById('added-ingredients').innerText = "";
+            }
+        }
+    }
+
+    function goToNextCity() {
+        currentStep++;
+        if (currentStep < destinations.length) {
+            currentPizza = [];
+            document.getElementById('added-ingredients').innerText = "";
+            document.getElementById('message').innerText = "";
+            document.getElementById('next-city-btn').classList.add('hidden');
+            document.getElementById('current-city').innerText = "Current Stop: " + destinations[currentStep].city;
+            document.getElementById('order-request').innerText = "Order: " + destinations[currentStep].order.join(", ");
+        } else {
+            document.getElementById('game-container').innerHTML = "<h1>World Tour Complete! 👨‍🍳</h1><p>You are now a Master Global Pizzaiolo.</p><a href='fromscratch.html'>Return Home</a>";
+        }
+    }
+</script>
+
+</body>
+</html>

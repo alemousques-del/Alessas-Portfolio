@@ -1,0 +1,96 @@
+/* --- 1. Base Modern Aesthetics --- */
+body {
+    background-color: #faf4e7;
+    color: #333333;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* --- 2. The Classy Container --- */
+.main-container {
+    max-width: 1100px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 100px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
+    border: 1px solid #f0f0f0;
+    text-align: center; /* Centers headings and philosophy text */
+}
+
+
+h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    font-family: 'Palatino', 'Georgia', serif;
+    margin-bottom: 40px;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 100px;           /* Length of the line */
+    height: 2px;            /* Thickness */
+    background: #333333;    /* Color */
+    margin: 15px auto 0;    /* Centers the line under the text */
+}
+
+h1 {
+    font-size: 2.8rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+/* --- 4. Left-Aligned Lists (Centered Block) --- */
+/* This keeps the bullets neat while centering the section */
+.content-box ul, .content-box ol {
+    display: table;      
+    margin: 0 auto 40px auto; 
+    text-align: left;    
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+/* --- 5. Media & Video Centering --- */
+.video-section, .media-section {
+    width: 100%;
+    margin: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+iframe, .blog-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* --- 6. Footer Navigation --- */
+.footer-navigation {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid #f2f2f2;
+    font-size: 0.95rem;
+    text-align: center; /* This centers the text and links */
+}
+/* Style 1: Targets your Switzerland image */
+.scratch-photo {
+    display: block;
+    margin: 20px auto;        /* Centers the image */
+    max-width: 80%;           /* Keeps it from being too huge */
+    border: 8px solid white;  /* Gives it a "Polaroid" photo look */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Adds a shadow */
+}
+
+/* Style 2: Setting a custom font family for the page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f1ea; /* A soft, professional off-white */
+    color: #2c3e50;            /* Dark slate blue for readability */
+}
