@@ -1,0 +1,23 @@
+p{
+font-weight: bold;
+}
+
+#top{
+text-decoration: underline;
+}
+
+.emphasizeText{
+    font-style= italic;
+    color: red;
+}
+
+body{
+    background-color: lightsalmon;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align:center;
+    border: 5px solid black;
+    margin:20px;
+    padding: 20px;
+    
+}
+

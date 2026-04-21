@@ -1,0 +1,26 @@
+p {
+    font-weight: 300;
+    color: #4a4a4a;
+}
+
+#top {
+    text-decoration: none;
+    background: linear-gradient(to bottom, transparent 60%, #ffd8cc 40%); /* Highlighter effect */
+}
+
+.emphasizeText {
+    font-style: italic;
+    color: #bc6c25; /* Burnt orange/terracotta */
+    font-family: 'Georgia', serif; /* Mixes serif with sans-serif for a "cool" look */
+}
+
+body {
+    background-color: #fefae0; /* Soft cream/bone */
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    border: 2px solid #dda15e;
+    margin: 50px auto;
+    max-width: 800px; /* Keeps the text from stretching too wide */
+    padding: 60px;
+    border-radius: 50px 5px 50px 5px; /* Funky asymmetrical corners */
+}
